@@ -13144,21 +13144,21 @@ It is a ratio of true positives(words classified as spam, and which are actually
 <ol>
 <li>Random forest<ul>
 <li>Real world application: predicting whether a user will make a purchase in on an ecommerce website. In this case, the website would collect lots of past user data, including clicking pattern, navigation pattern, view pattern, etc., use that data to train a random forest model, and then predict user purchase decisions. Ref: <a href="http://blog.akanoo.com/how-to-predict-purchase-probability-with-random-forest-models/">http://blog.akanoo.com/how-to-predict-purchase-probability-with-random-forest-models/</a></li>
-<li>Strengths of the model: good classifer when there are many weak inputs (Section 9 of Ref1), minimize overfitting for trees and neural nets (Section 13 of Ref1), can handle a large number of features (Ref2), and with increasing number of features the bias usually decreases (Ref2). <strong>Ref1</strong>: <a href="https://www.stat.berkeley.edu/~breiman/randomforest2001.pdf">Breiman, “Random Forests”, Machine Learning, 45(1), 5-32, 2001.</a>, <strong>Ref2</strong>: <a href="https://home.zhaw.ch/~dueo/bbs/files/random-forest-intro-presented.pdf">https://home.zhaw.ch/~dueo/bbs/files/random-forest-intro-presented.pdf</a>.</li>
-<li>Weaknesses of the model: slow training as hundreds to thousands of trees will be constructed, difficult to interpret (<a href="https://home.zhaw.ch/~dueo/bbs/files/random-forest-intro-presented.pdf">https://home.zhaw.ch/~dueo/bbs/files/random-forest-intro-presented.pdf</a>).</li>
+<li>Strengths of the model: good classifer when there are many weak inputs (Section 9 of Ref1), minimize overfitting for trees and neural nets (Section 13 of Ref1), can handle tens to hundreds of features (Ref2), with increasing number of features the bias usually decreases, and training time increases logarithmically with number of instances  (Ref2). <strong>Ref1</strong>: <a href="https://www.stat.berkeley.edu/~breiman/randomforest2001.pdf">Breiman, “Random Forests”, Machine Learning, 45(1), 5-32, 2001.</a>, <strong>Ref2</strong>: <a href="https://home.zhaw.ch/~dueo/bbs/files/random-forest-intro-presented.pdf">https://home.zhaw.ch/~dueo/bbs/files/random-forest-intro-presented.pdf</a>.</li>
+<li>Weaknesses of the model: difficult to interpret (<a href="https://home.zhaw.ch/~dueo/bbs/files/random-forest-intro-presented.pdf">https://home.zhaw.ch/~dueo/bbs/files/random-forest-intro-presented.pdf</a>).</li>
 <li>Why is this model a good candidte? In this problem, we have lots of weak features, especially the one-hot encoded ones, which might give random forest a leg up. In addition, the dataset is reasonably large to allow for a large numer of trees, and as a a good example of an ensemble method, random forest could be a good candidate.</li>
 </ul>
 </li>
 <li>Support vector machines<ul>
 <li>Real world application: text or hypertext categorization. For example, lots of companies use SVMs to mine and understand customer feedback in order to generate proper automated responses, as descbribed in <a href="https://people.cs.pitt.edu/~adamlee/courses/cs2001/svm_intro.pdf">this paper</a>.</li>
-<li>Strengths: capability to deal with large parameter space, easy to set up, and using kernel tricks can enable fitting curved boundaries. SVMs can perform well when dimensionality is high, and instances are sparse in occupying this high dimensional space. Refs: <a href="https://en.wikipedia.org/wiki/Support_vector_machine">https://en.wikipedia.org/wiki/Support_vector_machine</a>, <a href="https://link.springer.com/content/pdf/10.1007%2FBF00994018.pdf">C. Cortes, V. Vapnik - Machine Learning, 20, 273-297 (1995)</a>.</li>
-<li>Weaknesses: training on large datasets might be slow, and the requirement of numerical data might limit its utility in natural language processing. Ref: <a href="https://en.wikipedia.org/wiki/Support_vector_machine">https://en.wikipedia.org/wiki/Support_vector_machine</a>.</li>
+<li>Strengths: capability to deal with hundres or thousands of features, easy to set up, and using kernel tricks can enable fitting curved boundaries. SVMs can perform well when instances are sparse in occupying this high dimensional space. Refs: <a href="https://en.wikipedia.org/wiki/Support_vector_machine">https://en.wikipedia.org/wiki/Support_vector_machine</a>, <a href="https://link.springer.com/content/pdf/10.1007%2FBF00994018.pdf">C. Cortes, V. Vapnik - Machine Learning, 20, 273-297 (1995)</a>.</li>
+<li>Weaknesses: training time is exponential to sample size, and the requirement of numerical data might limit its utility in natural language processing. Ref: <a href="https://en.wikipedia.org/wiki/Support_vector_machine">https://en.wikipedia.org/wiki/Support_vector_machine</a>.</li>
 <li>Why pick SVMs? The parameter space is big, data points are sparse with only 45222 instances, and all the features are numerical, so SVMs mgiht work well.</li>
 </ul>
 </li>
 <li>Logistic regression<ul>
 <li>Real world application: prediction of disease based on various body indicators. These body indicators like blood pressure, weight, height, age, etc, could be fed into the model to generate the logistic prediction model. For example, <a href="http://ajbasweb.com/old/ajbas/2014/July/31-37.pdf">this study</a> uses logistic regression to predict diabetes [Umamaheswari et al. Australian Journal of Basic and Applied Sciences, 8(10) July 2014, Pages: 31-37].</li>
-<li>Strengths: quick, easy to interpret, and robust with many features. Ref: <a href="https://en.wikipedia.org/wiki/Logistic_regression">https://en.wikipedia.org/wiki/Logistic_regression</a>.</li>
+<li>Strengths: logarithmic to sample size, importance of feature is evident in coefficient weight, and robust with large number of features (hundreds to thousands). Ref: <a href="https://en.wikipedia.org/wiki/Logistic_regression">https://en.wikipedia.org/wiki/Logistic_regression</a>.</li>
 <li>Weaknesses: (1) logistic regression ideally requires independence of features, which is difficult to satisfy. For example, in this problem, the dummied features are generally not indepedent, like a citizen of Australia is not going to be citizen of India. (2) Logistic regression assumes there is approximately a linear decision boundary, which is also hard to satisfy. Ref: <a href="https://en.wikipedia.org/wiki/Logistic_regression">https://en.wikipedia.org/wiki/Logistic_regression</a>.</li>
 <li>Why is logistic regression a good candidate: it's quick and simple, robust with the many features, and could provide a benchmark for other more complicated methods.</li>
 </ul>
@@ -14121,9 +14121,9 @@ Look at the graph at the bottom left from the cell above(the visualization creat
 <p>Logistic regression worked the best among the three classifiers, for the following 4 reasons:</p>
 <ul>
 <li>Logistic regression gave the highest F-score when 100% of the training set is used to predict the testing data set.</li>
-<li>Training time of logistic regression is less than 1% of that of SVM, and about 50% of that of random forest.</li>
 <li>As the most intuitive, and simplest method of the three, logistic regression nicely captures meaningful information, and tells the importance of the features directly via the coefficients.</li>
 <li>As the differences between the accuracy and f_beta scores of the logistic regression model in either the training set or the testing set are close, overfitting seemed not to be a problem. </li>
+<li>Another advantage of logistic regreesion is that its training time is less than 1% of that of SVM, and about 50% of that of random forest. Since the training is not required to be performed real time on the fly, this advantage is not important.</li>
 </ul>
 
 </div>
@@ -14147,8 +14147,8 @@ Look at the graph at the bottom left from the cell above(the visualization creat
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer: </strong></p>
-<p>We chose a logistic regression model for predicting whether a worker earns above 50k per year. This model is trained on an existing dataset of more than 45k employees in the state of California. Quantitative data, such as capital loss, hours of work per week, and education levels are carefully treated to ensure all numbers are well behaved. Qualitative data, such as race, gender, etc are converted to numerical ones with some encoding. Both types of features are used in training the model. In training the model, a random draw of 80% of all the data are used. The contribution of each feature is reflected in a coefficient assigned to the feature, and the magnitude of such a feature. The combined result of all the features come out as the prediction.</p>
-<p>This model is then tested on the remaining 20% of the dataset, i.e., the test set. As the accuracy and precission scores of the model on the training set is quite close to that of the test set, we conclude that the model actually behaves well with unseen data. Now we are confident that this logistic regression model, with all the coefficients for the features, can be used to predict a new state of California worker with relatively high accuracy (~80%).</p>
+<p>We chose a logistic regression model for predicting whether a worker earns above 50k per year. This model is trained on an existing dataset of more than 45k employees in the state of California. In this model, each person will have a bunch of features, such as working hours per week, race, education levels, and job type. We tried to gauge the importance in determining whether a certain person makes above 50k/year. We do this by assigning an importance factor to each feature. These importance factors are found/trained using a training data set, so that the final trained model will give results close to reality. For a given individual, the importance factors combine to predict whether this person makes above 50k/year or not. The training set is a random draw of 80% of all the people are used.</p>
+<p>This model is then tested on the remaining 20% of the dataset, i.e., the test set. As the accuracy and precission scores of the model on the training set is quite close to that of the test set, we conclude that the model actually behaves well with unseen data. Now we are confident that this logistic regression model can be used to predict a new state of California worker with relatively high accuracy, or make correct predictions around 80% of the time.</p>
 
 </div>
 </div>
@@ -14281,7 +14281,7 @@ Final F-score on the testing data: 0.6842
 <td style="text-align:center">Accuracy Score</td>
 <td style="text-align:center">0.2478</td>
 <td style="text-align:center">0.8419</td>
-<td style="text-align:center">0.8320</td>
+<td style="text-align:center">0.8420</td>
 </tr>
 <tr>
 <td style="text-align:center">F-score</td>
@@ -14301,7 +14301,7 @@ Final F-score on the testing data: 0.6842
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer: </strong></p>
 <ul>
-<li>The accuracy and F-score of the optimized model are 0.8320 and 0.6842 respectively.</li>
+<li>The accuracy and F-score of the optimized model are 0.8420 and 0.6842 respectively.</li>
 <li>These scores a both slightly better than the unoptimized model.</li>
 <li>The optimized outperform the benchmark predictor significantly.</li>
 </ul>
@@ -14713,7 +14713,7 @@ iIiISMooABQRERFJGQWAIiIiIimjAFBEREQkZf4/YtAOpmHVXKcAAAAASUVORK5CYII=
 <p><strong>Answer:</strong></p>
 <ul>
 <li>These five features are the same ones I discussed in Question 6, though in a different order.</li>
-<li>I was close to the same answer, but my ordering was off. It is hard to have a clear intuition on the exact ordering of these features, and only the data can tell us which matters more or less.</li>
+<li>I was close to the same answer, but my ordering was off. It is hard to have a clear intuition on the exact ordering of these features, and only the data can tell us which matters more or less. Of course, all the categorial one-hot encoded features do not make the top 5, as they are split into more features, and the impact of them got diluted into these encoded features.</li>
 </ul>
 
 </div>
