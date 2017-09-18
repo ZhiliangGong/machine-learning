@@ -11836,7 +11836,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># Import the visualization code</span>
@@ -11964,7 +11964,7 @@ Run the agent.py file after setting the flags from projects/smartcab folder inst
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[15]:</div>
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># Load the &#39;sim_no-learning&#39; log file from the initial simulation results</span>
@@ -13335,7 +13335,7 @@ $$ \epsilon_{t+1} = \epsilon_{t} - 0.05, \hspace{10px}\textrm{for trial number }
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># Load the &#39;sim_default-learning&#39; file from the default Q-Learning simulation</span>
@@ -14580,11 +14580,11 @@ liRJkiR1iAWWJEmSJHWIBZYkSZIkdcg/69z5LA345DgAAAAASUVORK5CYII=
 <p>The agent demonstrated learning capability with the Q-learning simulation, yet after the training trials, the agent did not pass the testing trials.</p>
 <ul>
 <li>The agent started from a high bad action ratio as did the basic driving agent.</li>
-<li>Overall, there was a decrease in total bad actions over the 20 training trials, from around 35% to around 15%, though the average reward per action seemed to have decreased.</li>
+<li>Overall, there was a decrease in total bad actions over the 20 training trials, from around 32% to around 11%, an increase of average reward per action (from about -3 to around 0), and an increase of reliability from around 0% to 40%.</li>
 <li>The agent requires 20 training trails before testing, which makes sense as epsilon goes to 0 at training trial #20, and the default tolerance for epsilon is set at 0.05 in the simulator.</li>
 <li>The decaying function implemented is accurately represented in the parameters panel, from 0.95 to 0 linearly.</li>
 <li>There is an upwards trend in reliability during the resting trials.</li>
-<li>The safety rating must be higher, as the ratio of bad actions is much lower at 15% in the Q-learning agent. The reliability rate of the Q-learning agent is comparable to that of the basic agent.</li>
+<li>The safety rating must be higher, as the ratio of bad actions is much lower at 10% in the Q-learning agent. The reliability rate of the Q-learning agent is comparable to that of the basic agent.</li>
 </ul>
 
 </div>
@@ -14629,7 +14629,7 @@ $$ \epsilon = a^t, \textrm{for } 0 &lt; a &lt; 1 \hspace{50px}\epsilon = \frac{1
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[14]:</div>
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># Load the &#39;sim_improved-learning&#39; file from the improved Q-Learning simulation</span>
@@ -16239,10 +16239,10 @@ aSqcwZIkSZKkllhgSZIkSVJLLLAkSZIkqSUWWJIkSZLUEgssSZIkSWqJBZYkSZIktcQCS5IkSZJa
 <ul>
 <li>Decay function: $ \epsilon = 0.95^t $</li>
 <li>About 90 training trials were needed before testing.</li>
-<li>Epsilon-tolerance was 0.01, and alpha was 0.2. I observed that more training trials were needed for learning, so lowered the tolerance to 0.01. Alpha was set to 0.2, so that the algorithm is explorative enough to go through many states, and strike a balance between learning and exploring.</li>
-<li>This Q-learner was much improved, passing both safety and reliability with good grades. In particular, bad actions account for close to 4% at the end of training, compased to 15% in the default Q-learner. Average rewards for each move is much improved, increasing from around -1.5 to around 0.5. The Rate of reliability is also much imrpoved, from 40% to around 70%.</li>
-<li>I would say the Q-learner results show that my driving agent learned an appropriate policy based on passing the safety and reliability criteria, and based on the appropriate actions in the sim_improved-learning.txt report.</li>
-<li>Yes, I'm satisfied with the safety and reliability ratings. Safety is most important, so an A is good. Reliability grade was good enough at B.</li>
+<li>Epsilon-tolerance was 0.005, and alpha was 0.5. I observed that more training trials were needed for learning, so lowered the tolerance to 0.005. Alpha was set to 0.5, so that the algorithm is explorative enough to go through many states, and strike a balance between learning and exploring.</li>
+<li>This Q-learner was much improved, passing both safety and reliability with good grades. In particular, bad actions account for close to 0% at the end of training, compased to 11% in the default Q-learner. Average rewards for each move is much improved, increasing from around 0 to close to 2. The Rate of reliability is also much imrpoved, from 40% to close to 100%.</li>
+<li>I would say the Q-learner results show that my driving agent learned an appropriate policy based on passing the safety and reliability criteria with high ratings, and based on the appropriate actions in the sim_improved-learning.txt report.</li>
+<li>Yes, I'm satisfied with the safety and reliability ratings. Safety is most important, so an A+ is good. Reliability grade was good enough at A.</li>
 </ul>
 
 </div>
